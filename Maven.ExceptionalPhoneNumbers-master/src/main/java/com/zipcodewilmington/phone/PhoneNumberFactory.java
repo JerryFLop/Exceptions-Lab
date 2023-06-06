@@ -1,7 +1,9 @@
 package com.zipcodewilmington.phone;
 
 import com.zipcodewilmington.exceptions.InvalidPhoneNumberFormatException;
+import com.zipcodewilmington.tools.RandomNumberFactory;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
@@ -19,16 +21,27 @@ public final class PhoneNumberFactory {
      * @param phoneNumberCount - number of PhoneNumber objects to instantiate
      * @return array of randomly generated PhoneNumber objects
      */ //TODO - Implement logic
-    public static PhoneNumber[] createRandomPhoneNumberArray(int phoneNumberCount) {
-        return null;
+    public static PhoneNumber[] createRandomPhoneNumberArray(int phoneNumberCount) throws InvalidPhoneNumberFormatException {
+
+        PhoneNumber[] phoneNumbers = new ArrayList();
+
+
+
+        return ;
     }
 
     /**
      * @return an instance of PhoneNumber with randomly generated phone number value
      */ //TODO - Implement logic
     public static PhoneNumber createRandomPhoneNumber() {
-        return createPhoneNumberSafely(-1, -1, -1);
+        int areaCode = RandomNumberFactory.createInteger(111,111);
+        int centralOfficeCode = RandomNumberFactory.createInteger(111,111);
+        int phoneLineCode = RandomNumberFactory.createInteger(111,111);
+
+        return createPhoneNumberSafely(areaCode,centralOfficeCode, phoneLineCode);
     }
+
+
 
 
     /**
@@ -39,12 +52,18 @@ public final class PhoneNumberFactory {
      */ //TODO - if input is valid, return respective PhoneNumber object, else return null
     public static PhoneNumber createPhoneNumberSafely(int areaCode, int centralOfficeCode, int phoneLineCode) {
 
-        if(String.valueOf(areaCode).length() == 3 && String.valueOf(centralOfficeCode).length() == 3 && String.valueOf())
 
+        String number = "";
+        if(String.valueOf(areaCode).length() == 3 && String.valueOf(centralOfficeCode).length() == 3 && String.valueOf(phoneLineCode).length() == 4){
+            number =String.format("(%03d)-%03d-%04d", areaCode, centralOfficeCode, phoneLineCode);
+        } try {
+            return createPhoneNumber(number);
 
+        } catch (InvalidPhoneNumberFormatException e) {
+            logger.warning(areaCode + "-" + centralOfficeCode + "-" + phoneLineCode + "-" + " is not a valid phone number ");
+            return null;
+        }
 
-
-        return createPhoneNumber(null);
 
     }
 
