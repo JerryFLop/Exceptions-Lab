@@ -38,7 +38,14 @@ public final class PhoneNumberFactory {
      * @return a new phone number object
      */ //TODO - if input is valid, return respective PhoneNumber object, else return null
     public static PhoneNumber createPhoneNumberSafely(int areaCode, int centralOfficeCode, int phoneLineCode) {
+
+        if(String.valueOf(areaCode).length() == 3 && String.valueOf(centralOfficeCode).length() == 3 && String.valueOf())
+
+
+
+
         return createPhoneNumber(null);
+
     }
 
     /**
@@ -46,7 +53,11 @@ public final class PhoneNumberFactory {
      * @return a new phone number object
      * @throws InvalidPhoneNumberFormatException - thrown if phoneNumberString does not match acceptable format
      */ // TODO - Add throws statement to method signature
-    public static PhoneNumber createPhoneNumber(String phoneNumberString) {
-        return null;
+    public static PhoneNumber createPhoneNumber(String phoneNumberString) throws InvalidPhoneNumberFormatException {
+        logger.info("Attempting to create a new phoneNumber with a value" + phoneNumberString);
+        return new PhoneNumber(phoneNumberString);
     }
+
+
+
 }
