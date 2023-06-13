@@ -24,7 +24,7 @@ public final class PhoneNumberFactory {
     public static PhoneNumber[] createRandomPhoneNumberArray(int phoneNumberCount) throws InvalidPhoneNumberFormatException {
 
         PhoneNumber[] phoneNumbers = new PhoneNumber[phoneNumberCount];
-for(int n = 0; n < phoneNumbers.length;  n++){
+      for(int n = 0; n < phoneNumbers.length;  n++){
     phoneNumbers[n]=createRandomPhoneNumber();
 }
        return phoneNumbers ;
@@ -36,7 +36,7 @@ for(int n = 0; n < phoneNumbers.length;  n++){
     public static PhoneNumber createRandomPhoneNumber() {
         int areaCode = RandomNumberFactory.createInteger(111,111);
         int centralOfficeCode = RandomNumberFactory.createInteger(111,111);
-        int phoneLineCode = RandomNumberFactory.createInteger(111,1111);
+        int phoneLineCode = RandomNumberFactory.createInteger(1111,1111);
 
         return createPhoneNumberSafely(areaCode,centralOfficeCode, phoneLineCode);
     }
