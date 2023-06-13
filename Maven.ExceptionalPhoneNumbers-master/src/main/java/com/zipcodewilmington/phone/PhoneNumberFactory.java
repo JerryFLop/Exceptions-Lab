@@ -23,11 +23,11 @@ public final class PhoneNumberFactory {
      */ //TODO - Implement logic
     public static PhoneNumber[] createRandomPhoneNumberArray(int phoneNumberCount) throws InvalidPhoneNumberFormatException {
 
-        PhoneNumber[] phoneNumbers = new ArrayList();
-
-
-
-        return ;
+        PhoneNumber[] phoneNumbers = new PhoneNumber[phoneNumberCount];
+for(int n = 0; n < phoneNumbers.length;  n++){
+    phoneNumbers[n]=createRandomPhoneNumber();
+}
+       return phoneNumbers ;
     }
 
     /**
@@ -36,7 +36,7 @@ public final class PhoneNumberFactory {
     public static PhoneNumber createRandomPhoneNumber() {
         int areaCode = RandomNumberFactory.createInteger(111,111);
         int centralOfficeCode = RandomNumberFactory.createInteger(111,111);
-        int phoneLineCode = RandomNumberFactory.createInteger(111,111);
+        int phoneLineCode = RandomNumberFactory.createInteger(111,1111);
 
         return createPhoneNumberSafely(areaCode,centralOfficeCode, phoneLineCode);
     }
